@@ -4,10 +4,10 @@ import { ptBR } from "date-fns/locale";
 import { X } from "lucide-react";
 
 interface NoteCardProps {
-  note: { date: Date; content: string };
+  note: { id: string; date: Date; content: string };
+  onNoteDeleted: (id: string) => void;
 }
-
-export function NoteCard({ note }: NoteCardProps) {
+export function NoteCard({ note, onNoteDeleted }: NoteCardProps) {
   return (
     // dialog é o modal
     <Dialog.Root>
@@ -26,7 +26,7 @@ export function NoteCard({ note }: NoteCardProps) {
       <Dialog.Portal>
         {/* overlay é pra fazer o fundo escuro */}
         <Dialog.Overlay className="inset-0 fixed bg-black/50" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[60vh] max-w-[640px] flex flex-col rounded-md outline-none overflow-hidden bg-slate-700">
+        <Dialog.Content className="fixed inset-0 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-full md:h-[60vh] md:max-w-[640px] flex flex-col md:rounded-md outline-none overflow-hidden bg-slate-700">
           <Dialog.Close className="absolute right-0 top-0 bg-slate-800 p-1.5 text-slate-400 hover:text-slate-100 ">
             <X className="size-5" />
           </Dialog.Close>
@@ -42,6 +42,7 @@ export function NoteCard({ note }: NoteCardProps) {
           </div>
           <button
             type="button"
+            onClick={() => onNoteDeleted(note.id)}
             className="w-full bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none font-medium group"
           >
             Deseja{" "}

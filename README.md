@@ -1,3 +1,5 @@
+![COVER](https://github.com/rocketseat-education/nlw-expert-react/blob/main/.github/cover.png)
+
 # NOTAS 
 Aplicação desenvolvida no evento NLW expert - trilha ReactJs da Rocketseat, consiste em adicionar notas em áudio ou texto. Utilizado React, TypeScript, Tailwind e a SpeechRecognition API.
 
